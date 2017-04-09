@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
 try:
 	import tkinter as tk
 	import tkinter.ttk as ttk
@@ -6,10 +8,11 @@ except ImportError:
 	import ttk
 
 import sys
-from Noun import Noun
-from Verb import Verb
+
 from Adjective import Adjective
+from Noun import Noun
 from Pronoun import Pronoun
+from Verb import Verb
 
 softwarename = 'Latin Helper '  # remember to put a space after the name
 version = '0.2.1'

@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
 from Noun import NounFrame
 
 try:
@@ -19,7 +21,7 @@ def getwinfo(widget):
 
 class AdjectiveFrame(NounFrame):
 	def __init__(self,master=None,gender=''):
-		super().__init__(master)
+		NounFrame.__init__(master)
 		tk.Label(self,text=gender,font=('Times New Romans',14,'bold')).grid(row=0,column=1,columnspan=2)
 
 
@@ -51,7 +53,7 @@ def suffix(stem, suffix):
 
 class Adjective(tk.Frame):
 	def __init__(self,master=None,window_widget=None):
-		super(Adjective, self).__init__(master)
+		tk.Frame.__init__(self, master)
 		self.window_widget=window_widget
 		tk.Label(self,text='Please enter the dictionary form of a adjective.').pack()
 		tk.Label(self, text='e.g. celeber, celebris, celebre').pack()
