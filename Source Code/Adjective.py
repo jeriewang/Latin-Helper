@@ -106,7 +106,10 @@ class Adjective(tk.Frame):
 				stem = nom[:-2]
 				suf = 'um i o um o um a orum is a is a'.split()
 			elif nom[-1] == 'r':
-				stem = nom[:-1]
+				if nom[-2:] == 'er':
+					stem = nom[:-2]+'r'
+				else:
+					stem = nom[:-1]
 				suf = 'r i o um o r i orum is os is i'.split()
 			elif nom[-3:] == 'ius':
 				stem = nom[:-3]
