@@ -21,7 +21,7 @@ def getwinfo(widget):
 
 class AdjectiveFrame(NounFrame):
 	def __init__(self,master=None,gender=''):
-		super().__init__(master)
+		NounFrame.__init__(master)
 		tk.Label(self,text=gender,font=('Times New Romans',14,'bold')).grid(row=0,column=1,columnspan=2)
 
 

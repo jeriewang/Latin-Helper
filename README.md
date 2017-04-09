@@ -8,5 +8,7 @@ Sometimes, the application can have all kinds of weird problems. In this case, i
 2. Type `python ` (there is a space after it) in terminal, then drag the file to the Terminal window. 
 ![Screenshot](images/3.png)
 3. Press `enter`.
+
 ![Screenshot](images/4.png)
+
 Note: In this case, the program is attached to the terminal. To terminate the program, simply close the terminal winow. 
