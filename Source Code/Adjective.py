@@ -21,7 +21,7 @@ def getwinfo(widget):
 
 class AdjectiveFrame(NounFrame):
 	def __init__(self,master=None,gender=''):
-		NounFrame.__init__(master)
+		NounFrame.__init__(self,master)
 		tk.Label(self,text=gender,font=('Times New Romans',14,'bold')).grid(row=0,column=1,columnspan=2)
 
 
@@ -106,7 +106,10 @@ class Adjective(tk.Frame):
 				stem = nom[:-2]
 				suf = 'um i o um o um a orum is a is a'.split()
 			elif nom[-1] == 'r':
-				stem = nom[:-1]
+				if nom[-2:] == 'er':
+					stem = nom[:-2]+'r'
+				else:
+					stem = nom[:-1]
 				suf = 'r i o um o r i orum is os is i'.split()
 			elif nom[-3:] == 'ius':
 				stem = nom[:-3]
@@ -154,17 +157,19 @@ class Adjective(tk.Frame):
 				self.positive.fill_in_the_answer(answerp)
 				self.comparative.fill_in_the_answer(answerc)
 				self.superlative.fill_in_the_answer(answers)
-				return 'first & second declension'
+				return 'first/second declension'
 			else: #third declension
 				top=tk.Toplevel()
 				centerwindow(top, 124, 466)
-				def varify_blank():
+				def varify_blank(event=None):
 					if manual_stem.get().replace(' ','') != '' or tmpbutton.get():
 						top.destroy()
 				tk.Label(top,text='The machine detected your input is a third declension adjective. Please').pack()
 				tk.Label(top,text='provide the masculine positive genitive, or let the machine decide this.').pack()
 				manual_stem=tk.StringVar()
-				tk.Entry(top,textvariable=manual_stem).pack()
+				tmpentry=tk.Entry(top,textvariable=manual_stem)
+				tmpentry.pack()
+				tmpentry.bind('<Return>',varify_blank)
 				tmpbutton=tk.BooleanVar()
 				tk.Checkbutton(top,text='Let the machine decide it (very likely to be inaccurate and get weird result!)',variable=tmpbutton).pack()
 				tk.Button(top,text='Continue',command=varify_blank).pack()
@@ -198,9 +203,9 @@ class Adjective(tk.Frame):
 				answerp.append(third(input_[0], True, False, stem))
 				answerp.append(third(input_[1], True, False, stem))
 				answerp.append(third(input_[2], True, True, stem))
-				answerc.append(third(stem + 'ior', False, False, input_[1][:-1] + 'ior'))
-				answerc.append(third(stem + 'ior', False, False, input_[1][:-1] + 'ior'))
-				answerc.append(third(stem + 'ius', False, True, input_[1][:-1] + 'ior'))
+				answerc.append(third(stem + 'ior', False, False, stem + 'ior'))
+				answerc.append(third(stem + 'ior', False, False, stem + 'ior'))
+				answerc.append(third(stem + 'ius', False, True, stem + 'ior'))
 				answers.append(
 						second(stem + 'issimus'))
 				answers.append(
