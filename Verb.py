@@ -4,8 +4,7 @@ try:
 except ImportError:
 	import Tkinter as tk
 
-if __name__ == '__main__':
-	root=tk.Tk()
+
 
 def centerwindow(window,h,w):
 	sh = window.winfo_screenheight()
@@ -368,13 +367,8 @@ class Verb(tk.Frame):
 		subjunctive.passive.selection.future_check.grid_forget()
 		subjunctive.passive.selection.futureperfect_check.grid_forget()
 
-		#indicative.active.selection.main_selection.set(True)
-		#indicative.active.selection.select_all()
-		#indicative.active.selection.imperfect.set(False)
-		#indicative.active.selection.perfect.set(False)
-		#indicative.active.selection.futureperfect.set(False)
-		#indicative.active.selection.future.set(False)
-		#indicative.active.selection.pluperfect.set(False)
+		indicative.active.selection.main_selection.set(True)
+		indicative.active.selection.select_all()
 
 		indicative.pack()
 		subjunctive.pack()
@@ -396,7 +390,6 @@ class Verb(tk.Frame):
 				data=['place holder']
 
 			self.answer_area=tk.Frame(result_panel)
-
 
 			indicative_frame=tk.Frame(self.answer_area)
 			subjunctive_frame=tk.Frame(self.answer_area)
@@ -473,7 +466,7 @@ class Verb(tk.Frame):
 
 			###display###
 			if not indicative.active.selection.main_selection.get() and not indicative.passive.selection.main_selection.get() and not subjunctive.active.selection.main_selection.get() and not subjunctive.passive.selection.main_selection.get():
-				tk.Label(result_panel,text="        Error: You did not select anything to be displayed",font=('Times New Roman',15,'bold')).pack(anchor='w')
+				tk.Label(result_panel,text="        Error: You did not select anything to be displayed (Checkboxes below)",font=('Times New Roman',15,'bold')).pack(anchor='w')
 				display=False
 			elif display:
 				tk.Label(result_panel,text="The Conjugation of The Verb: "+usr_input.get()+\
@@ -509,12 +502,14 @@ class Verb(tk.Frame):
 				tk.Label(error_frame,
 				         text='You will only be required to enter the third principle part if you selected').pack(anchor='w',)
 				tk.Label(error_frame,
-				         text='any perfect tenses in active voice and fourth principle part if you selected').pack(anchor='w')
+				         text='any perfect tenses in active voice, and fourth principle part if you selected').pack(anchor='w')
 				tk.Label(error_frame,
 				         text='any perfect tenses in passive voice. If you choose to omit the third principle').pack(anchor='w')
 				tk.Label(error_frame,
 				         text='part, you should still keep the comma. For example: "amo, amare, ,amatus"').pack(anchor='w')
-				error_frame.pack()
+				help_button = tk.Button(result_panel,text='Help?',
+				                        command=lambda: (f for f in (error_frame.pack(), help_button.pack_forget())))
+				help_button.pack(side=tk.LEFT)
 				centerwindow(result_panel,254,508)
 
 
@@ -534,6 +529,10 @@ class Verb(tk.Frame):
 				try:
 					subjunctive.active.tense.future.grid_forget()
 					subjunctive.active.tense.futureperfect.grid_forget()
+				except AttributeError:
+					pass
+
+				try:
 					subjunctive.passive.tense.future.grid_forget()
 					subjunctive.passive.tense.futureperfect.grid_forget()
 				except AttributeError:
@@ -560,10 +559,6 @@ class Verb(tk.Frame):
 
 					last_page()
 
-
-
-
-
 				master.wait_window(result_panel)
 				master.deiconify()
 
@@ -574,7 +569,7 @@ class Verb(tk.Frame):
 			result_panel.lift()
 			result_panel.grab_set()
 			if not indicative.active.selection.main_selection.get() and not indicative.passive.selection.main_selection.get():
-				tk.Label(result_panel,text="You did not select anything to be displayed").pack()
+				tk.Label(result_panel,text="You did not select anything to be displayed ").pack()
 				display=False
 			else:
 				tk.Label(result_panel,text="The Conjugation of The Verb: sum, esse, fui, futurus",font=('Times New Roman',30,'italic')).pack()
@@ -605,7 +600,7 @@ class Verb(tk.Frame):
 			#result_panel.overrideredirect(1)
 			result_panel.lift()
 			result_panel.grab_set()
-			if not indicative.active.selection.main_selection.get() and not passive.selection.main_selection.get():
+			if not indicative.active.selection.main_selection.get() and not indicative.passive.selection.main_selection.get():
 				tk.Label(result_panel,text="Error: Please select something to be displayed").pack(anchor='w')
 				display=False
 			else:
@@ -621,7 +616,7 @@ class Verb(tk.Frame):
 			if display:
 				window_widget.withdraw()
 				indicative.active.tense.pack()
-				if passive.selection.main_selection.get():
+				if indicative.passive.selection.main_selection.get():
 					tk.Label(result_panel,text='The verb posse has no passive voice',font=('Times New Roman',16)).pack()
 
 
@@ -629,9 +624,9 @@ class Verb(tk.Frame):
 			if display:
 				window_widget.wait_window(result_panel)
 				window_widget.deiconify()
-	
-	
-		#usr_input.insert(0,'amo, amare, amavi, amatus')
+
+
+		#usr_input.insert(0,'amo, amare, amavi, amatus') #debug
 
 		tk.Button(frame,text='generate',command=generate).pack(side=tk.RIGHT)
 		specialcase=tk.Frame(self)
@@ -642,6 +637,7 @@ class Verb(tk.Frame):
 
 	
 if __name__ == '__main__':
+	root = tk.Tk()
 	verb=Verb(root,root)
 	verb.pack()
 	root.attributes('-topmost',True)
