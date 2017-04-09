@@ -7,7 +7,7 @@ except ImportError:
 
 class PronounFrame(NounFrame):
 	def __init__(self,master=None):
-		NounFrame.__init__(master)
+		NounFrame.__init__(self,master)
 		self.voc_s.grid_forget()
 		self.voc_p.grid_forget()
 		self.voc_l.grid_forget()
