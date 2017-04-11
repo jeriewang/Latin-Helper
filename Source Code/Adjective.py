@@ -29,18 +29,18 @@ class AdjectiveAllGender(tk.Frame):
 	def __init__(self,master=None):
 		tk.Frame.__init__(self,master)
 		self.masculine = AdjectiveFrame(self, 'masculine')
-		self.femine = AdjectiveFrame(self, 'femine')
+		self.feminine = AdjectiveFrame(self, 'feminine')
 		self.neuter = AdjectiveFrame(self, 'neuter')
 		self.masculine.grid(row=1, column=0)
 		ttk.Separator(self).grid(row=1, column=1, sticky='ns')
-		self.femine.grid(row=1, column=2, padx=20)
+		self.feminine.grid(row=1, column=2, padx=20)
 		ttk.Separator(self).grid(row=1, column=3, sticky='ns')
 		self.neuter.grid(row=1, column=4, padx=20)
 
 	def fill_in_the_answer(self,answers):
 		"answers should be a 3 elements tuple or list, goes in order of (m),(s),(n)"
 		self.masculine.fill_in_the_answer(answers[0])
-		self.femine.fill_in_the_answer(answers[1])
+		self.feminine.fill_in_the_answer(answers[1])
 		self.neuter.fill_in_the_answer(answers[2])
 
 
@@ -55,19 +55,22 @@ class Adjective(tk.Frame):
 	def __init__(self,master=None,window_widget=None):
 		tk.Frame.__init__(self, master)
 		self.window_widget=window_widget
-		tk.Label(self,text='Please enter the dictionary form of a adjective.').pack()
-		tk.Label(self, text='e.g. celeber, celebris, celebre').pack()
-		tk.Label(self, text='However, if two or more parts are the same, they can be omitted.').pack()
-		exframe1=tk.Frame(self)
+		padingframe=tk.Frame(self,padx=10)
+		lf=tk.LabelFrame(padingframe,text='Instructions',relief='ridge',font=('Sans-serif',16,'italic'))
+
+		tk.Label(lf,text='Please enter the dictionary form of a adjective.').pack()
+		tk.Label(lf, text='e.g. celeber, celebris, celebre').pack()
+		tk.Label(lf, text='However, if two or more parts are the same, they can be omitted.').pack()
+		exframe1=tk.Frame(lf)
 		tk.Label(exframe1, text='e.g.').grid(column=0,row=0)
-		exentry1 = tk.Entry(exframe1,width=len('brevis, breve'))
+		exentry1 = tk.Entry(exframe1,width=len('brevis, breve')-4)
 		exentry1.grid(column=1,row=0)
 		exentry1.insert(0,'brevis, breve')
 		exentry1.config(state='readonly')
 		tk.Label(exframe1, text=' for brevis, brevis, breve,').grid(column=2,row=0)
 		exframe1.pack()
 
-		exframe2 = tk.Frame(self)
+		exframe2 = tk.Frame(lf)
 		tk.Label(exframe2, text='or').grid(column=0, row=0)
 		exentry2 = tk.Entry(exframe2, width=len('sapiens'))
 		exentry2.grid(column=1, row=0)
@@ -75,6 +78,9 @@ class Adjective(tk.Frame):
 		exentry2.config(state='readonly')
 		tk.Label(exframe2, text='for sapiens, sapiens, sapiens').grid(column=2, row=0)
 		exframe2.pack()
+
+
+		tk.Label(self,text='').pack() ## a blank line
 
 		entry=tk.Frame(self)
 		self.entry=tk.Entry(entry,width=30)
@@ -84,7 +90,9 @@ class Adjective(tk.Frame):
 		self.entry.insert(0,'This result might not be accurate!')
 		self.entry.bind('<FocusIn>',lambda event: (f for f in (self.entry.delete(0,tk.END),self.entry.config(fg='black'),self.entry.unbind('<FocusIn>'))))
 		tk.Button(entry,text='generate',command=self.build).pack(side=tk.RIGHT)
+
 		entry.pack()
+
 		self.positive_selection=tk.BooleanVar()
 		self.positive_selection.set(1)
 		self.superlative_selection = tk.BooleanVar()
@@ -94,6 +102,8 @@ class Adjective(tk.Frame):
 		tk.Checkbutton(sel, text='comparative', variable=self.comparative_selection).grid(column=1,row=0)
 		tk.Checkbutton(sel, text='superlative', variable=self.superlative_selection).grid(column=2,row=0)
 		sel.pack()
+		lf.pack()
+		padingframe.pack()
 
 	def build(self,event=None):
 		def first(nom):
@@ -164,8 +174,8 @@ class Adjective(tk.Frame):
 				def varify_blank(event=None):
 					if manual_stem.get().replace(' ','') != '' or tmpbutton.get():
 						top.destroy()
-				tk.Label(top,text='The machine detected your input is a third declension adjective. Please').pack()
-				tk.Label(top,text='provide the masculine positive genitive, or let the machine decide this.').pack()
+				tk.Label(top,text='The machine detected your input is a third declension adjective. Please pro-').pack()
+				tk.Label(top,text='vide the positive masculine singular genitive, or let the machine decide this.').pack()
 				manual_stem=tk.StringVar()
 				tmpentry=tk.Entry(top,textvariable=manual_stem)
 				tmpentry.pack()

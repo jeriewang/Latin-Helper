@@ -15,7 +15,7 @@ from Pronoun import Pronoun
 from Verb import Verb
 
 softwarename = 'Latin Helper '  # remember to put a space after the name
-version = '0.2.1'
+version = '0.2.2'
 
 root = tk.Tk()
 
