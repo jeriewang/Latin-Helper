@@ -354,13 +354,13 @@ class Verb(tk.Frame):
 		usr_input.bind('<Return>',lambda x: generate())
 		usr_input.pack(side=tk.LEFT)
 		frame.pack()
-		tk.Label(textbox_frame,text="Please select the forms you want to conjugate:").pack()
+
 		textbox_frame.pack()
 
+		ls=tk.LabelFrame(self, text="Please select what you want to conjugate:",font=('Sans-serif', 14),labelanchor='n')
 
-
-		indicative=Mood(self,'indicative',endings_indicative)
-		subjunctive=Mood(self,'subjunctive',endings_subjunctive)
+		indicative=Mood(ls,'indicative',endings_indicative)
+		subjunctive=Mood(ls,'subjunctive',endings_subjunctive)
 
 		subjunctive.active.selection.future_check.grid_forget()
 		subjunctive.active.selection.futureperfect_check.grid_forget()
@@ -373,7 +373,7 @@ class Verb(tk.Frame):
 		indicative.pack()
 		subjunctive.pack()
 
-
+		ls.pack()
 
 		def generate():
 			display=True
@@ -629,11 +629,12 @@ class Verb(tk.Frame):
 		#usr_input.insert(0,'amo, amare, amavi, amatus') #debug
 
 		tk.Button(frame,text='generate',command=generate).pack(side=tk.RIGHT)
-		specialcase=tk.Frame(self)
-		tk.Label(specialcase,text='special cases: ').pack(side=tk.LEFT)
-		tk.Button(specialcase,text="esse",command=sum).pack(side=tk.LEFT)
-		tk.Button(specialcase,text="posse",command=possum).pack(side=tk.LEFT)
-		specialcase.pack()
+
+		# specialcase=tk.Frame(self)
+		# tk.Label(specialcase,text='special cases: ').pack(side=tk.LEFT)
+		# tk.Button(specialcase,text="esse",command=sum).pack(side=tk.LEFT)
+		# tk.Button(specialcase,text="posse",command=possum).pack(side=tk.LEFT)
+		# specialcase.pack()  #special cases will be updated soon(hopefully,) with new API
 
 	
 if __name__ == '__main__':
