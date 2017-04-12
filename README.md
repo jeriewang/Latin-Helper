@@ -11,7 +11,7 @@ Click on the green button at top-right corner, then select download zip.
 Sometimes, the application can have all kinds of weird problems. In this case, it is better to run the source code directly. The following steps are written for macOS, as `Python` is pre-installed on every mac.
 1. Open the Terminal.app, which is located in /Application/Utilities folder.
 ![Screenshot](images/2.png)
-2. Type `python ` (there is a space after it) in terminal, then drag the file to the Terminal window. 
+2. Type `python ` (there is a space after it) in terminal, then drag the file `Latin Helper.py` located in the `source` folder to the Terminal window. 
 ![Screenshot](images/3.png)
 3. Press `enter`.
 
