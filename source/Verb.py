@@ -348,7 +348,7 @@ class Verb(tk.Frame):
 
 		textbox_frame=tk.Frame(self)
 		tk.Label(textbox_frame,text="Please enter the dictionary form of the word here").pack()
-		tk.Label(textbox_frame,text='e.g. amo,amare,amavi,amatus').pack()
+		tk.Label(textbox_frame,text='e.g. cogito, cogitare, cogitavi, cogitatus').pack()
 		frame=tk.Frame(textbox_frame)
 		usr_input=tk.Entry(frame,width=30)
 		usr_input.bind('<Return>',lambda x: generate())
@@ -494,7 +494,7 @@ class Verb(tk.Frame):
 				tk.Label(error_frame,text="The above error(s) may also occur because you didn't enter the word in a").pack(anchor='w')
 				tk.Label(error_frame,text=" machine-recognizable form. Your input should be like this: ").pack(anchor='w')
 				entry = tk.Entry(error_frame)
-				entry.insert(0, 'amo, amare, amavi, amatus')
+				entry.insert(0, 'cogito, cogitare, cogitavi, cogitatus')
 				entry.pack()
 				entry.config(state='readonly')
 				tk.Label(error_frame,
@@ -506,7 +506,7 @@ class Verb(tk.Frame):
 				tk.Label(error_frame,
 				         text='any perfect tenses in passive voice. If you choose to omit the third principle').pack(anchor='w')
 				tk.Label(error_frame,
-				         text='part, you should still keep the comma. For example: "amo, amare, ,amatus"').pack(anchor='w')
+				         text='part, you should still keep the comma. For example: cogito, cogitare, ,cogitatus"').pack(anchor='w')
 				help_button = tk.Button(result_panel,text='Help?',
 				                        command=lambda: (f for f in (error_frame.pack(), help_button.pack_forget())))
 				help_button.pack(side=tk.LEFT)
