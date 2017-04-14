@@ -106,6 +106,7 @@ class Pronoun(tk.Frame):
 	def build_no_nom(self,title,answers):
 		result_panel = tk.Toplevel()
 		self.window_widget.withdraw()
+		centerwindow(result_panel,195,369)
 		tk.Label(result_panel, text=title, font=('Times New Roman', 24, 'bold')).pack()
 		#centerwindow()
 		frame = PronounFrameNoNom(result_panel)
