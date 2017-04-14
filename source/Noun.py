@@ -271,16 +271,16 @@ class NounFrame(tk.Frame):
 		answer_width = 15
 		###left column###
 
-		self.nom_s = tk.Label(self, text="nominative")
-		self.nom_s.grid(row=2, column=0)
-		self.gen_s = tk.Label(self, text="genitive")
-		self.gen_s.grid(row=3, column=0)
-		self.dat_s = tk.Label(self, text="dative")
-		self.dat_s.grid(row=4, column=0)
-		self.acc_s = tk.Label(self, text="accusative")
-		self.acc_s.grid(row=5, column=0)
-		self.abl_s = tk.Label(self, text="ablative")
-		self.abl_s.grid(row=6, column=0)
+		self.nom_l = tk.Label(self, text="nominative")
+		self.nom_l.grid(row=2, column=0)
+		self.gen_l = tk.Label(self, text="genitive")
+		self.gen_l.grid(row=3, column=0)
+		self.dat_l = tk.Label(self, text="dative")
+		self.dat_l.grid(row=4, column=0)
+		self.acc_l = tk.Label(self, text="accusative")
+		self.acc_l.grid(row=5, column=0)
+		self.abl_l = tk.Label(self, text="ablative")
+		self.abl_l.grid(row=6, column=0)
 		self.voc_l=tk.Label(self, text="vocative")
 		self.voc_l.grid(row=7, column=0)
 

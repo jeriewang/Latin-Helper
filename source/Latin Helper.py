@@ -8,7 +8,7 @@ except ImportError:
 	import ttk
 
 import sys
-
+import signal
 from Adjective import Adjective
 from Noun import Noun
 from Pronoun import Pronoun
@@ -42,7 +42,7 @@ def getwinfo(widget):
 
 
 root.createcommand('::tk::mac::Quit', lambda: quitsoftware(first))
-
+signal.signal(signal.SIGINT,lambda :quitsoftware(first))
 
 root.bind_all('<Command-W>', lambda event: quitsoftware(root))
 
