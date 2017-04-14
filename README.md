@@ -1,3 +1,5 @@
+Thank you for Henry Yong's contribution to this software.
+
 # Introduction
 Hi! I am Ruocheng Wang, a currently Latin 1 student. This is the first serious Python GUI program I made. This program is meant to help Latin students with their classwork. However, before you use it, please make sure you are not violating your school's honor code. 
 
