@@ -41,36 +41,42 @@ class Pronoun(tk.Frame):
 	def __init__(self,master=None,window_widget=None):
 		tk.Frame.__init__(self,master)
 		self.window_widget=window_widget
-		tk.Label(self,text='Personal Pronouns',font=('Times New Roman',16)).grid(row=0,columnspan=5)
-		tk.Button(self,text='First Person',command=lambda : self.build('First Person Pronoun',('ego','meī','mihi','mē','mē','nōs','nostrum','nōbīs','nōs','nōbīs'))).grid(row=1,column=0)
-		tk.Button(self,text='Second Person',command=lambda: self.build('Second Person Pronoun','tū,tuī,tibi,tē,tē,vōs,vestrum,vōbīs,vōs,vōbīs'.split(','))).grid(row=1,column=1)
-		tk.Button(self,text='Third Person',command=lambda : self.build('Third Person Pronoun',(('is eius ei eum eo ei eorum eis eos eis'.split()),('ea eius ei eam ea eae earum eis eas eis'.split()),('id eius ei id eo ea eorum eis ea eis'.split())),True)).grid(row=1,column=2)
 
-		tk.Label(self, text='Relative Pronouns', font=('Times New Roman', 16)).grid(row=2, columnspan=5)
-		tk.Button(self,text='Relative Pronouns',command=lambda : self.build('Relative Pronouns',('qui cuius cui quem quō quī quorum quibus quōs quibus'.split(),
-		                                                                                          'quae cuius cui quam qua quae quarum quibus quas quibus'.split(),'quod cuius cui quod quō quae quorum quibus quae quibus'.split()),True)).grid(row=3,column=1)
-		tk.Label(self,text='Interrogative Pronouns',font=('Times New Roman', 16)).grid(row=4, columnspan=5)
-		tk.Button(self,text='Interrogative Pronouns',command=lambda : self.build('Interrogative Prnouns',('quis cuius cui quem quo qui quorum quibus quos quibus'.split(),'quis cuius cui quem quo quae quorum quibus quas quibus'.split(),'quid cuius cui quid quo quae quorum quibus quae quibus'.split()),True)).grid(row=5,column=1)
+		frame1=tk.Frame(self)
+		tk.Label(frame1,text='Personal Pronouns',font=('Times New Roman',16)).grid(row=0,columnspan=5)
+		tk.Button(frame1,text='First Person',command=lambda : self.build('First Person Pronoun',('ego','meī','mihi','mē','mē','nōs','nostrum','nōbīs','nōs','nōbīs'))).grid(row=1,column=0)
+		tk.Button(frame1,text='Second Person',command=lambda: self.build('Second Person Pronoun','tū,tuī,tibi,tē,tē,vōs,vestrum,vōbīs,vōs,vōbīs'.split(','))).grid(row=1,column=1)
+		tk.Button(frame1,text='Third Person',command=lambda : self.build('Third Person Pronoun',(('is eius ei eum eo ei eorum eis eos eis'.split()),('ea eius ei eam ea eae earum eis eas eis'.split()),('id eius ei id eo ea eorum eis ea eis'.split())),True)).grid(row=1,column=2)
 
-		tk.Label(self, text='Indefinite Pronouns', font=('Times New Roman', 16)).grid(row=6, columnspan=5)
-		tk.Button(self,text='Indefininite Pronouns',command=lambda :self.build('Indefinite Pronouns',('quidam,cuiusdam,cuidam,quendam,quodam,quidam,quorundam,quibusdam,quosdam,quibusdam'.split(','),'quaedam cuiusdam cuidam quandam quadam quaedam quarundam quibus quasdam quibusdam'.split(),'quoddam cuiusdam cuidam quoddam quodam quadam quorundam quibusdam quodam quibusdam'.split()),True)).grid(row=7,column=1)
+		tk.Label(frame1, text='Reflexive Pronouns', font=('Times New Roman', 16)).grid(row=2, columnspan=5)
+		tk.Button(frame1, text='First Person', command=lambda: self.build_no_nom('First Person Pronoun', (
+			'meī', 'mihi', 'mē', 'mē', 'nostri', 'nōbīs', 'nōs', 'nōbīs'))).grid(row=3, column=0)
+		tk.Button(frame1, text='Second Person', command=lambda: self.build_no_nom('Second Person Pronoun',
+		                                                                        'tuī,tibi,tē,tē,vestri,vōbīs,vōs,vōbīs'.split(
+				                                                                        ','))).grid(row=3, column=1)
+		tk.Button(frame1, text='Third Person', command=lambda: self.build_no_nom('Third Person Pronoun', (
+		'sui sibi se se sui sibi se se'.split()))).grid(row=3, column=2)
+		frame1.pack()
 
-		tk.Label(self, text='Intensive Pronouns', font=('Times New Roman', 16)).grid(row=8, columnspan=5)
-		tk.Button(self,text='Intensive Pronouns',command=lambda : self.build('Intensive Pronouns',('ipse ipsius ipsi ipsum ipso ipsi ipsorum ipsis ipsos ipsis'.split(),'ipsa ipsius ipsi ipsam ipsa ipsae ipsarum ipsis ipsas ipsis'.split(),'ipsum ipsius ipsi ipsum ipso ipsa ipsorum ipsis ipsa ipsis'.split()),True)).grid(row=9,column=1)
+		frame2=tk.Frame(self)
+		tk.Label(frame2, text='Relative Pronouns', font=('Times New Roman', 16)).grid(row=2,column=0)
+		tk.Button(frame2,text='qui, quae, quod',font=('Sans-serif',12,'italic'),command=lambda : self.build('Relative Pronouns',('qui cuius cui quem quō quī quorum quibus quōs quibus'.split(),
+		                                                                                          'quae cuius cui quam qua quae quarum quibus quas quibus'.split(),'quod cuius cui quod quō quae quorum quibus quae quibus'.split()),True)).grid(row=3,column=0)
+		tk.Label(frame2,text='Interrogative Pronouns',font=('Times New Roman', 16)).grid(row=2, column=1)
+		tk.Button(frame2,text='quis, quis, quid',font=('Sans-serif',12,'italic'),command=lambda : self.build('Interrogative Prnouns: who what which',('quis cuius cui quem quo qui quorum quibus quos quibus'.split(),'quis cuius cui quem quo quae quorum quibus quas quibus'.split(),'quid cuius cui quid quo quae quorum quibus quae quibus'.split()),True)).grid(row=3,column=1)
 
-		tk.Label(self, text='Reflexive Pronouns', font=('Times New Roman', 16)).grid(row=10, columnspan=5)
-		tk.Button(self, text='First Person', command=lambda: self.build_no_nom('First Person Pronoun', (
-		'meī', 'mihi', 'mē', 'mē', 'nostri', 'nōbīs', 'nōs', 'nōbīs'))).grid(row=11, column=0)
-		tk.Button(self, text='Second Person', command=lambda: self.build_no_nom('Second Person Pronoun',
-		                                                                 'tuī,tibi,tē,tē,vestri,vōbīs,vōs,vōbīs'.split(
-			                                                                 ','))).grid(row=11, column=1)
-		tk.Button(self, text='Third Person', command=lambda: self.build_no_nom('Third Person Pronoun',('sui sibi se se sui sibi se se'.split()))).grid(row=11, column=2)
-		tk.Label(self, text='Demonstrative Pronouns', font=('Times New Roman', 16)).grid(row=12, columnspan=5)
-		tk.Button(self,text='hic, haec, hoc',font=('Sans-serif',12,'italic'),command=lambda: self.build('hic, haec, hoc: this, these',('his huius huic hunc hoc hi horum his hos his'.split(),'haec huius huic hanc haec hae harum his has his'.split(),'hoc huius huic hoc hoc haec horum his haec his'.split()),True)).grid(row=13,column=0)
-		tk.Button(self,text='ille, illa, illud',font=('Sans-serif',12,'italic'),command=lambda: self.build('ille, illa, illud: that, those',('ille illius illi illum illo illi illorum illis illos illis'.split(),'illa illius illi illam illa illae illarum illis illas illis'.split(),'illud illius illi illud illo illa illorum illis illa illis'.split()),True)).grid(row=13,column=1)
-		tk.Button(self,text='iste ista istud',font=('Sans-serif',12,'italic'),command=lambda: self.build('that, such',('iste istius isti istum isto isti istroum istis istos istis'.split(),'ista istuis isti istam ista istae istarum istis istas istis'.split(),'istud istius isti istud isto ista istorum istis ista istis'.split()),True)).grid(row=13,column=2)
-		tk.Button(self,text='idem, eadem, idem',font=('Sans-serif',12,'italic'),command=lambda: self.build('the same',('idem eiusdem eidem eundem eodem eidem eorundem eisdem eosdem eisdem'.split(),'eadem eiusdem eidem eandem eadem eaedem earundem eisdem easdem eisdem'.split(),'idem eiusdem eidem idem eodem eadem eorundem eisdem eadem eisdem'.split()),True)).grid(row=14,column=0)
+		tk.Label(frame2, text='Indefinite Pronouns', font=('Times New Roman', 16)).grid(row=4, column=0)
+		tk.Button(frame2,text='quidam, quaedam, quoddam',font=('Sans-serif',12,'italic'),command=lambda :self.build('Indefinite Pronouns: someone, something',('quidam,cuiusdam,cuidam,quendam,quodam,quidam,quorundam,quibusdam,quosdam,quibusdam'.split(','),'quaedam cuiusdam cuidam quandam quadam quaedam quarundam quibus quasdam quibusdam'.split(),'quoddam cuiusdam cuidam quoddam quodam quadam quorundam quibusdam quodam quibusdam'.split()),True)).grid(row=5,column=0)
 
+		tk.Label(frame2, text='Intensive Pronouns', font=('Times New Roman', 16)).grid(row=4, column=1)
+		tk.Button(frame2,text='ipse, ipsa, ipsum',font=('Sans-serif',12,'italic'),command=lambda : self.build('Intensive Pronouns: one\'s self',('ipse ipsius ipsi ipsum ipso ipsi ipsorum ipsis ipsos ipsis'.split(),'ipsa ipsius ipsi ipsam ipsa ipsae ipsarum ipsis ipsas ipsis'.split(),'ipsum ipsius ipsi ipsum ipso ipsa ipsorum ipsis ipsa ipsis'.split()),True)).grid(row=5,column=1)
+
+		tk.Label(frame2, text='Demonstrative Pronouns', font=('Times New Roman', 16)).grid(row=6,columnspan=4)
+		tk.Button(frame2,text='hic, haec, hoc',font=('Sans-serif',12,'italic'),command=lambda: self.build('Demonstrative Pronouns: this, these',('his huius huic hunc hoc hi horum his hos his'.split(),'haec huius huic hanc haec hae harum his has his'.split(),'hoc huius huic hoc hoc haec horum his haec his'.split()),True)).grid(row=7,column=0)
+		tk.Button(frame2,text='ille, illa, illud',font=('Sans-serif',12,'italic'),command=lambda: self.build('Demonstrative Pronouns: that, those',('ille illius illi illum illo illi illorum illis illos illis'.split(),'illa illius illi illam illa illae illarum illis illas illis'.split(),'illud illius illi illud illo illa illorum illis illa illis'.split()),True)).grid(row=7,column=1)
+		tk.Button(frame2,text='iste, ista, istud',font=('Sans-serif',12,'italic'),command=lambda: self.build('Demonstrative Pronouns: that, such',('iste istius isti istum isto isti istroum istis istos istis'.split(),'ista istuis isti istam ista istae istarum istis istas istis'.split(),'istud istius isti istud isto ista istorum istis ista istis'.split()),True)).grid(row=8,column=0)
+		tk.Button(frame2,text='idem, eadem, idem',font=('Sans-serif',12,'italic'),command=lambda: self.build('Demonstrative Pronouns: the same',('idem eiusdem eidem eundem eodem eidem eorundem eisdem eosdem eisdem'.split(),'eadem eiusdem eidem eandem eadem eaedem earundem eisdem easdem eisdem'.split(),'idem eiusdem eidem idem eodem eadem eorundem eisdem eadem eisdem'.split()),True)).grid(row=8,column=1)
+		frame2.pack()
 
 	def build(self,title,answers,allgenders=False):
 		self.window_widget.withdraw()
@@ -99,6 +105,7 @@ class Pronoun(tk.Frame):
 
 	def build_no_nom(self,title,answers):
 		result_panel = tk.Toplevel()
+		self.window_widget.withdraw()
 		tk.Label(result_panel, text=title, font=('Times New Roman', 24, 'bold')).pack()
 		#centerwindow()
 		frame = PronounFrameNoNom(result_panel)

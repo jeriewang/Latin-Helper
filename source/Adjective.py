@@ -161,9 +161,9 @@ class Adjective(tk.Frame):
 				answerc.append(third(input_[1][:-1]+'ior',False,False,input_[1][:-1] + 'ior'))
 				answerc.append(third(input_[1][:-1] + 'ior', False, False,input_[1][:-1] + 'ior'))
 				answerc.append(third(input_[1][:-1] + 'ius', False, True,input_[1][:-1] + 'ior'))
-				answers.append(second(input_[1][:-1]+'issimus' if input_[1][-2] != 'r' else input_[1][:-1]+'rimus'))
-				answers.append(first(input_[1][:-1]+'issima' if input_[1][-2] != 'r' else input_[1][:-1]+'rima'))
-				answers.append(second(input_[1][:-1]+'issimum' if input_[1][-2] != 'r' else input_[1][:-1]+'rimum'))
+				answers.append(second(input_[1][:-1]+'issimus' if (input_[1][-2] != 'r' or input_[1][-2] != 'l' )else input_[1][:-1]+input_[1][-2]+'imus'))
+				answers.append(first(input_[1][:-1]+'issima' if (input_[1][-2] != 'r' or input_[1][-2] != 'l' )else input_[1][:-1]+input_[1][-2]+'ima'))
+				answers.append(second(input_[1][:-1]+'issimum' if (input_[1][-2] != 'r' or input_[1][-2] != 'l' )else input_[1][:-1]+input_[1][-2]+'imum'))
 				self.positive.fill_in_the_answer(answerp)
 				self.comparative.fill_in_the_answer(answerc)
 				self.superlative.fill_in_the_answer(answers)
@@ -217,11 +217,11 @@ class Adjective(tk.Frame):
 				answerc.append(third(stem + 'ior', False, False, stem + 'ior'))
 				answerc.append(third(stem + 'ius', False, True, stem + 'ior'))
 				answers.append(
-						second(stem + 'issimus'))
+						second(stem + 'issimus' if (stem[-1] != 'r' and stem[-1] != 'l') else stem + stem[-1]+ 'imus'))
 				answers.append(
-						first(stem + 'issima'))
+						first(stem + 'issima' if (stem[-1] != 'r' and stem[-1] != 'l') else stem +  stem[-1]+'ima'))
 				answers.append(
-						second(stem + 'issimum'))
+						second(stem + 'issimum' if (stem[-1] != 'r' and stem[-1] != 'l') else stem +  stem[-1]+'imum'))
 				self.positive.fill_in_the_answer(answerp)
 				self.comparative.fill_in_the_answer(answerc)
 				self.superlative.fill_in_the_answer(answers)
