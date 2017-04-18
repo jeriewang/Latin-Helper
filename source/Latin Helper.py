@@ -15,7 +15,7 @@ from Pronoun import Pronoun
 from Verb import Verb
 
 softwarename = 'Latin Helper '  # remember to put a space after the name
-version = '0.2.2'
+version = '0.2.3'
 
 root = tk.Tk()
 
@@ -66,7 +66,6 @@ first.attributes('-topmost', True)
 first.bind('<FocusIn>', lambda x: (f for f in (first.attributes('-topmost', False), first.unbind('<FocusIn>'))))
 
 centerwindow(first,169,208)
-
 
 root.wait_window(first)
 root.createcommand('::tk::mac::Quit', lambda: quitsoftware(selection))
