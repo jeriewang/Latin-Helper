@@ -1,2 +1,3 @@
-
-source/.idea/workspace.xml
+source/.idea
+source/__pycache__
+Release
