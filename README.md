@@ -3,6 +3,8 @@
 #### UPDATE Apr. 18: Minor release 0.2.3 (Bugs Fix)
 #### UPDATE Apr. 14: Windows and Mac Version is now online.
 Thanks Henry Yong's for his contribution to this software.
+# Software Screenshot
+![](images/0.png)
 # Introduction
 Hi! I am Ruocheng Wang, a currently Latin 1 student. This is the first serious Python GUI program I made. This program is meant to help Latin students with their classwork. However, before you use it, please make sure you are not violating your school's honor code. 
 
@@ -10,14 +12,15 @@ I have to say that although I made the algorithm in the program as accurate as p
 
 Note that the maximum window height of verb part is 1179 pixels, and 1192 pixels for adjective part. This means that if your screen resolution is not high enough (e.g. 1920x1080), don't select everything when you are generating the answer. 
 
+
 # How to Run Source File
 Sometimes, the application can have all kinds of weird problems. In this case, it is better to run the source code directly. The following steps are written for macOS, as `Python` is pre-installed on every mac.
 1. Open the Terminal.app, which is located in /Application/Utilities folder.
-![Screenshot](images/2.png)
+![](images/2.png)
 2. Type `python ` (there is a space after it) in terminal, then drag the file `Latin Helper.py` located in the `source` folder to the Terminal window. 
-![Screenshot](images/3.png)
+![](images/3.png)
 3. Press `enter`.
 
-![Screenshot](images/4.png)
+![](images/4.png)
 
 Note: In this case, the program is attached to the terminal. To terminate the program, simply close the terminal winow. 
