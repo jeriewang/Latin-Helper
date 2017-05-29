@@ -1,7 +1,7 @@
 ### The latest release can be found at [here](https://github.com/pkqxdd/Latin-Helper/releases)
 
-### UPDATE Apr. 18: Minor release 0.2.3 (Bugs Fix)
-### UPDATE Apr. 14: Windows and Mac Version is now online.
+#### UPDATE Apr. 18: Minor release 0.2.3 (Bugs Fix)
+#### UPDATE Apr. 14: Windows and Mac Version is now online.
 Thanks Henry Yong's for his contribution to this software.
 # Introduction
 Hi! I am Ruocheng Wang, a currently Latin 1 student. This is the first serious Python GUI program I made. This program is meant to help Latin students with their classwork. However, before you use it, please make sure you are not violating your school's honor code. 
