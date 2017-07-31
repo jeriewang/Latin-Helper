@@ -1,6 +1,6 @@
 ### The latest release can be found at [here](https://github.com/pkqxdd/Latin-Helper/releases)
 
-#### UPDATE Apr. 18: Minor release 0.2.3 (Bugs Fix)
+#### UPDATE Apr. 18: Minor release 0.2.3 (Bugs Fix) 
 #### UPDATE Apr. 14: Windows and Mac Version is now online.
 Thanks Henry Yong's for his contribution to this software.
 # Software Screenshot
